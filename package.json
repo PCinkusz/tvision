@@ -1,0 +1,75 @@
+{
+  "name": "tvision",
+  "version": "0.1.0",
+  "private": true,
+  "description": "TVision - live TV player",
+  "main": "electron/main.cjs",
+  "type": "module",
+  "scripts": {
+    "data": "node scripts/build-data.mjs --check",
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "electron:dev": "concurrently -k \"vite\" \"wait-on http://localhost:5173 && cross-env VITE_DEV=1 electron .\"",
+    "start": "vite build && electron .",
+    "dist": "vite build && electron-builder --win nsis -c.directories.output=C:/iptv-release",
+    "pack": "vite build && electron-builder --win dir"
+  },
+  "dependencies": {
+    "electron-updater": "^6.8.9",
+    "hls.js": "^1.7.3",
+    "lucide-react": "^1.59.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-virtuoso": "^4.18.19"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "concurrently": "^10.0.6",
+    "cross-env": "^10.1.0",
+    "electron": "^44.9.0",
+    "electron-builder": "^26.15.3",
+    "png-to-ico": "^3.0.2",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.4",
+    "wait-on": "^9.5.1"
+  },
+  "author": "TVision",
+  "build": {
+    "appId": "com.tvision.player",
+    "productName": "TVision",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**",
+      "electron/**",
+      "build/icon.png",
+      "package.json"
+    ],
+    "win": {
+      "target": "nsis",
+      "signAndEditExecutable": false,
+      "icon": "build/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "perMachine": false,
+      "installerIcon": "build/icon.ico",
+      "uninstallerIcon": "build/icon.ico",
+      "shortcutName": "TVision"
+    },
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "PCinkusz",
+        "repo": "tvision-releases",
+        "releaseType": "release"
+      }
+    ]
+  }
+}

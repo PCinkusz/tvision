@@ -1,0 +1,22 @@
+# Private source repo. Builds the installer and publishes it to the PUBLIC releases repo (see package.json build.publish).
+# Needs secret RELEASES_TOKEN: a fine-grained PAT with "Contents: read/write" on the public releases repo.
+name: release
+on:
+  push:
+    tags: ['v*']
+  schedule:
+    - cron: '0 4 * * 1'   # weekly rebuild so shipped channel data stays fresh
+  workflow_dispatch:
+jobs:
+  win:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm ci
+      - run: npm run data
+      - run: npx vite build
+      - run: npx electron-builder --win nsis --publish always
+        env:
+          GH_TOKEN: ${{ secrets.RELEASES_TOKEN }}
