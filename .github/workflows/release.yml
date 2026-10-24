@@ -1,7 +1,5 @@
-# Builds the Windows installer and publishes it to the public tvision-releases repo.
-# Installer releases stay separate so existing installed copies keep auto-updating.
+# Builds the Windows installer and publishes it to this repository's GitHub Releases.
 # The website deploys from this repository via site.yml.
-# Needs secret RELEASES_TOKEN: a fine-grained PAT with "Contents: read/write" on tvision-releases.
 name: release
 on:
   push:
@@ -9,6 +7,8 @@ on:
   schedule:
     - cron: '0 4 * * 1'   # weekly rebuild so shipped channel data stays fresh
   workflow_dispatch:
+permissions:
+  contents: write
 jobs:
   win:
     runs-on: windows-latest
@@ -21,4 +21,4 @@ jobs:
       - run: npx vite build
       - run: npx electron-builder --win nsis --publish always
         env:
-          GH_TOKEN: ${{ secrets.RELEASES_TOKEN }}
+          GH_TOKEN: ${{ github.token }}

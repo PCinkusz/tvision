@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
 export const OWNER = 'PCinkusz'
-export const REPO = 'tvision-releases'
+export const REPO = 'tvision'
 export const RELEASES_URL = `https://github.com/${OWNER}/${REPO}/releases/latest`
 
 export interface Release { version: string; url: string; size: string }

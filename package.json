@@ -67,7 +67,7 @@
       {
         "provider": "github",
         "owner": "PCinkusz",
-        "repo": "tvision-releases",
+        "repo": "tvision",
         "releaseType": "release"
       }
     ]

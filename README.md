@@ -5,7 +5,7 @@ from [iptv-org](https://github.com/iptv-org/iptv) into a fast desktop player wit
 live previews, search, favorites, history, and automatic source failover.
 
 [Live website](https://pcinkusz.github.io/tvision/) ·
-[Download](https://github.com/PCinkusz/tvision-releases/releases/latest) ·
+[Download](https://github.com/PCinkusz/tvision/releases/latest) ·
 [Source](https://github.com/PCinkusz/tvision)
 
 ![TVision home screen](website/public/shots/home.webp)
@@ -77,10 +77,9 @@ After that, every push that changes `website/**` deploys automatically to:
 https://pcinkusz.github.io/tvision/
 ```
 
-The installer releases remain on
-[`PCinkusz/tvision-releases`](https://github.com/PCinkusz/tvision-releases) so
-existing installed copies keep auto-updating. The website download links point
-there.
+Installer releases are published to this repository by
+`.github/workflows/release.yml`, so the website download button always points to
+the latest build here. The old `tvision-releases` repository is retired.
 
 ## License
 
