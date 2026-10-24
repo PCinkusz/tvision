@@ -3,18 +3,37 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TVision – Live TV from six countries, beautifully organized</title>
-    <meta name="description" content="TVision is a fast, modern live TV player for Windows. Browse thousands of public channels from the US, Spain, Germany, France, the UK and Poland with real live previews, smart categories and no accounts." />
-    <meta name="theme-color" content="#080c18" />
+    <title>TVision: six catalogs, one window</title>
+    <meta name="description" content="TVision is a free live TV player for Windows. Browse 2,719 public channels from six countries with live previews, search and automatic failover." />
+    <meta name="theme-color" content="#101623" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="TVision – Live TV from six countries, beautifully organized" />
-    <meta property="og:description" content="A fast, modern live TV player for Windows. Real live previews, smart categories, no accounts." />
-    <meta property="og:image" content="./shots/home.webp" />
+    <meta property="og:title" content="TVision: six catalogs, one window" />
+    <meta property="og:description" content="2,719 public channels from six countries in one Windows player. Free, no account." />
+    <meta property="og:image" content="./og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="TVision: six catalogs, one window." />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="./og.png" />
     <link rel="icon" href="./icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;600&family=IBM+Plex+Sans:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <div id="root"></div>
+    <noscript>
+      <div style="max-width: 46rem; margin: 4rem auto; padding: 0 1.5rem; font-family: system-ui, sans-serif; line-height: 1.6">
+        <h1>Six catalogs, one window.</h1>
+        <p>2,719 public channels from six countries, in one Windows player.</p>
+        <p><a href="https://github.com/PCinkusz/tvision-releases/releases/latest">Download TVision for Windows</a></p>
+        <p>The installer is not code-signed, so Windows may show a warning. Choose More info, then Run anyway.</p>
+        <p>TVision is free, needs no account and runs on Windows 10 and 11, 64-bit.</p>
+      </div>
+    </noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

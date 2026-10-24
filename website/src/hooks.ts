@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export const OWNER = 'PCinkusz'
 export const REPO = 'tvision-releases'
@@ -21,18 +21,4 @@ export function useRelease(): Release {
     return () => ctrl.abort()
   }, [])
   return r
-}
-
-/** Fades elements in when they scroll into view. */
-export function useReveal() {
-  const ref = useRef<HTMLDivElement>(null)
-  const [shown, setShown] = useState(false)
-  useEffect(() => {
-    const el = ref.current
-    if (!el) return
-    const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setShown(true); io.disconnect() } }, { threshold: 0.12 })
-    io.observe(el)
-    return () => io.disconnect()
-  }, [])
-  return [ref, shown] as const
 }

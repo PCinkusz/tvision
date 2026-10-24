@@ -3,3 +3,5 @@ dist
 release
 website/node_modules
 website/dist
+website/.tmp
+website/.hallmark
