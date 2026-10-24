@@ -79,7 +79,7 @@ https://pcinkusz.github.io/tvision/
 
 Installer releases are published to this repository by
 `.github/workflows/release.yml`, so the website download button always points to
-the latest build here. The old `tvision-releases` repository is retired.
+the latest build here.
 
 ## License
 
