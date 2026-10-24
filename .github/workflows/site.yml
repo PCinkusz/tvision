@@ -1,13 +1,20 @@
-# Builds the marketing site (website/) and publishes it to the public tvision-releases repo (served by GitHub Pages).
-# Uses the same RELEASES_TOKEN secret as release.yml.
+# Builds the marketing site (website/) and deploys it to GitHub Pages on this repository.
+# Pages must be configured with "Source: GitHub Actions" in Settings -> Pages.
 name: site
 on:
   push:
     branches: [main]
     paths: ['website/**']
   workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: true
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -17,10 +24,16 @@ jobs:
         working-directory: website
       - run: npm run build
         working-directory: website
-      - uses: peaceiris/actions-gh-pages@v4
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
         with:
-          personal_token: ${{ secrets.RELEASES_TOKEN }}
-          external_repository: PCinkusz/tvision-releases
-          publish_branch: main
-          publish_dir: website/dist
-          force_orphan: true
+          path: website/dist
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

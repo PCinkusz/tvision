@@ -1,5 +1,7 @@
-# Private source repo. Builds the installer and publishes it to the PUBLIC releases repo (see package.json build.publish).
-# Needs secret RELEASES_TOKEN: a fine-grained PAT with "Contents: read/write" on the public releases repo.
+# Builds the Windows installer and publishes it to the public tvision-releases repo.
+# Installer releases stay separate so existing installed copies keep auto-updating.
+# The website deploys from this repository via site.yml.
+# Needs secret RELEASES_TOKEN: a fine-grained PAT with "Contents: read/write" on tvision-releases.
 name: release
 on:
   push:

@@ -37,7 +37,7 @@
     "vite": "^8.3.4",
     "wait-on": "^9.5.1"
   },
-  "author": "TVision",
+  "author": "PCinkusz",
   "build": {
     "appId": "com.tvision.player",
     "productName": "TVision",
@@ -71,5 +71,14 @@
         "releaseType": "release"
       }
     ]
-  }
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PCinkusz/tvision.git"
+  },
+  "bugs": {
+    "url": "https://github.com/PCinkusz/tvision/issues"
+  },
+  "homepage": "https://pcinkusz.github.io/tvision/"
 }
